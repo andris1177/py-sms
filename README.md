@@ -1,6 +1,6 @@
 # py-sms
 
-## usgae
+## usage
 
 ``` bash
 python3 main.py
