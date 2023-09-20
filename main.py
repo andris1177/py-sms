@@ -1,22 +1,20 @@
 import requests
 
-def input_output():
-    print("Naponta csak egy üzenetet lehet küldeni!")
-    telefonszám = input("Add meg a telefonszámot amire szeretnél üzenetet küldeni:\n->")
-    üzenet = input("Add meg az üzenetet amit szeretnél küldeni\n->")
-    return telefonszám, üzenet
+class Send_sms:
+    def __init__(self):
+        print("You can only send one message daily")
+        self.number = input("Phone number: ")
+        self.message = input("Message: ")
+        self.send()
 
-def send(tszám, üzenet):
-    válasz = requests.post('https://textbelt.com/text', {
-    'phone': f'{tszám}',
-    'message': f'{üzenet}',
-    'key': 'textbelt',
-    })
+    def send(self):
+        self.response = requests.post("https://textbelt.com/text", 
+        {
+            'phone': f'{self.number}',
+            'message': f'{self.message}',
+            'key': 'textbelt',
+        })
 
-    print(válasz.json())
+        print(self.response.json)
 
-def main():
-    tszám, üzenet = input_output()
-    send(tszám, üzenet)
-
-main()
+send_sms = Send_sms()
